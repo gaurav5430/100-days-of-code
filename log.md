@@ -1,30 +1,22 @@
-# 100 Days Of Code - Log
+### Day 1
+Started working on Data Structures in Javascript using ES6.  
+Implemented Queue and Priority queue.  
+  
+**Learning:**  
+a bit about getters and setters.  
+using getter for a non settable property (length of Queue shouldn't be modifiable but should be visible)  
+Running ES6 code directly in chrome without transpilation.  
+Can't load modules without CORS - so need to run a web server if you want to use import/export  
+used array.reduce to work like array.findIndex  
 
-### Day 0: February 30, 2016 (Example 1)
-##### (delete me or comment me out)
+### Day 2
+Started implementing LinkedList in Javascript.  
 
-**Today's Progress**: Fixed CSS, worked on canvas functionality for the app.
-
-**Thoughts:** I really struggled with CSS, but, overall, I feel like I am slowly getting better at it. Canvas is still new for me, but I managed to figure out some basic functionality.
-
-**Link to work:** [Calculator App](http://www.example.com)
-
-### Day 0: February 30, 2016 (Example 2)
-##### (delete me or comment me out)
-
-**Today's Progress**: Fixed CSS, worked on canvas functionality for the app.
-
-**Thoughts**: I really struggled with CSS, but, overall, I feel like I am slowly getting better at it. Canvas is still new for me, but I managed to figure out some basic functionality.
-
-**Link(s) to work**: [Calculator App](http://www.example.com)
-
-
-### Day 1: June 27, Monday
-
-**Today's Progress**: I've gone through many exercises on FreeCodeCamp.
-
-**Thoughts** I've recently started coding, and it's a great feeling when I finally solve an algorithm challenge after a lot of attempts and hours spent.
-
-**Link(s) to work**
-1. [Find the Longest Word in a String](https://www.freecodecamp.com/challenges/find-the-longest-word-in-a-string)
-2. [Title Case a Sentence](https://www.freecodecamp.com/challenges/title-case-a-sentence)
+**Learning:**  
+how to create iterators using symbol.  
+how to use generators to create iterators  
+how to use generators as class methods.  
+no nested classes in ES6, so no way to define Node class within LinkedList class? 
+no private variables in es6, so used a getter to calculate length of linked list, so that length is not modifiable from outside. 
+The drawback is that everytime length is accessed it traverses the list to find out the length. Since there are no private properties, 
+there is no way to store length and not allow it to be changed from outside.
