@@ -1,7 +1,7 @@
 class LinkedList {
     constructor() {
         this.head = undefined;
-        this.Node = class Node{
+        this.Node = class {
             constructor(value, next) {
                 this.value = value;
                 this.next = next;
