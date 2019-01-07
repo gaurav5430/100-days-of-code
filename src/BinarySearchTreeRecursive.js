@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class BinarySearchTree {
+class BinarySearchTreeRecursive {
     constructor() {
         this.root = null;
     }
@@ -17,7 +17,7 @@ class BinarySearchTree {
             return this.root;
         }
 
-        return this.addNodeIterative(item, this.root);
+        return this.addNode(item, this.root);
     }
 
     addAll(arr) {
@@ -46,30 +46,6 @@ class BinarySearchTree {
                 this.addNode(item, node.right);
             }
         }
-    }
-    
-    addNodeIterative(item, node) {
-        while(node) {
-            if(item < node.value) {
-                if(!node.left) {
-                    let toInsert  = new Node(null, item, null);
-                    node.left = toInsert;
-                    break;
-                }
-
-                node = node.left;
-            }
-
-            else if(item > node.value) {
-                if(!node.right) {
-                    let toInsert  = new Node(null, item, null);
-                    node.right = toInsert;
-                    break;
-                }
-
-                node = node.right;
-            }
-        } 
     }
 
     delete(item) {
@@ -155,5 +131,31 @@ class BinarySearchTree {
         }
 
         return node;
+    }
+
+    preorderTraversal(node) {
+        if(node) {
+            console.log(node.value);
+            this.preorderTraversal(node.left);
+            this.preorderTraversal(node.right);
+        }
+    }
+
+    inorderTraversal(node) {
+        if(node) {
+            this.inorderTraversal(node.left);
+            console.log(node.value);
+            this.inorderTraversal(node.right);
+        }
+    }
+
+    postorderTraversal(node) {
+        if(node) {
+            this.postorderTraversal(node.left);
+            this.postorderTraversal(node.right);
+            console.log(node.value);
+            
+        }
+       
     }
 }

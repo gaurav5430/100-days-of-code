@@ -39,9 +39,4 @@ for(let item of list) {
 
 //list.remove(2);
 
-let bst = new BinarySearchTree();
-
-bst.add(2);
-bst.add(4);
-bst.add(3);
-bst.add(1);
+let bst = new BinarySearchTreeIterative();
