@@ -1,6 +1,6 @@
 ### Day 1
 Started working on Data Structures in Javascript using ES6.  
-Implemented Queue and Priority queue.  
+Implemented [Queue](https://github.com/gaurav5430/100-days-of-code/blob/master/src/Queue.js) and [Priority queue](https://github.com/gaurav5430/100-days-of-code/blob/master/src/PriorityQueue.js).  
   
 **Learning:**  
 a bit about getters and setters.  
@@ -10,7 +10,7 @@ Can't load modules without CORS - so need to run a web server if you want to use
 used array.reduce to work like array.findIndex  
 
 ### Day 2
-Started implementing LinkedList in Javascript.  
+Started implementing [LinkedList](src/LinkedList.js) in Javascript ES6.  
 
 **Learning:**  
 how to create iterators using symbol.  
@@ -22,9 +22,18 @@ The drawback is that everytime length is accessed it traverses the list to find 
 there is no way to store length and not allow it to be changed from outside.
 
 ### Day 3  
-Finsihed implementing LinkedList by adding common methods for addAt, removeAt.  
+Finsihed implementing [LinkedList](src/LinkedList.js) by adding common methods for addAt, removeAt.  
 
 **Learning**  
 - created inner class by using class expressions in constructor, not sure how good a practice it is.
 - was trying to look into the Set and Map objects on browser console to find implementation details, got to learn a bit about internal properties in double square brackets.
 - should LinkedList also provide methods like map, filter and reduce ?
+
+### Day 4  
+Started implementing [Binary Search Tree](https://github.com/gaurav5430/100-days-of-code/blob/master/src/BinarySearchTree.js) in ES6  
+
+**Learnings/Achievements**  
+- chrome has a task manager which can allow you to kill a tab, if it is running in an infinite loop and clicking on close doesn't work.
+- you can also try to pause and then stop script exacution to stop the infinite loop (didn't help in my case).
+- learnt how deletion in Binary Search Tree works. (0 child, 1 child, 2 child - min from right subtree or max from left subtree)
+- implemented recursive as well as iterative add method.
