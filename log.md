@@ -47,3 +47,11 @@ Continued implementing BST in ES6
 - learnt a bit about self-balancing BSTs. (AVL, Red-Black) , might implement them later.
 - planning to implement HashTables using LinkedLists, associative arrays using BST, associative arrays using HashTable, and Priority Queue using BST.
 - still to implement iterators in the BST, though i guess it would reuse the logic of inorder traversal.
+
+### Day 6:
+Not a lot of progress, finished iterative postorder traversal in BST.
+
+**Learning**
+- learnt a bit about associative arrays and how they can be implemented using BST, HashTable.
+- finally understood how iterative postorder traversal works with single/double stack and implemented it.
+
