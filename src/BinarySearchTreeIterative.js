@@ -173,20 +173,47 @@ class BinarySearchTreeIterative {
     }
 
     postorderTraversal(node) {
-        // let stack = [];
-        // let prev = null;
-        // stack.push(node);
-        // while(stack.length > 0) {
-        //     while(node) {
-        //         stack.push(node);
-        //         prev = node;
-        //         node = node.left;
-        //     }
-            
-        //     node = stack.pop();
-        //     console.log(node.value);
+        let firstStack = [];
+        let secondStack = [];
 
-        //     if(prev.right) stack.push(prev.right);
-        // }
+        firstStack.push(node);
+        while(firstStack.length > 0) {
+            let popped = firstStack.pop();
+            secondStack.push(popped);
+            if(popped.left) firstStack.push(popped.left);
+            if (popped.right) firstStack.push(popped.right);
+        }
+
+        let i = secondStack.length;
+        while(i) {
+            console.log(secondStack.pop().value);
+            i--;
+        }
+    }
+
+    postorderTraversalSingle(node) {
+        let stack = [];
+
+        //stack.push(node);
+        do {
+            while(node) {
+                if(node.right) stack.push(node.right);
+                stack.push(node);
+                node = node.left;
+            }
+
+            node = stack.pop();
+            if(node.right && node.right == stack[stack.length - 1]) {
+                stack.pop();
+                stack.push(node);
+                node = node.right;
+            }
+
+            else {
+                console.log(node.value)
+                node = null;
+            }
+
+        } while(stack.length > 0);
     }
 }
