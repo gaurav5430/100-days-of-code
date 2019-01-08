@@ -37,3 +37,13 @@ Started implementing [Binary Search Tree](https://github.com/gaurav5430/100-days
 - you can also try to pause and then stop script exacution to stop the infinite loop (didn't help in my case).
 - learnt how deletion in Binary Search Tree works. (0 child, 1 child, 2 child - min from right subtree or max from left subtree)
 - implemented recursive as well as iterative add method.
+
+### Day 5
+Continued implementing BST in ES6
+
+**Learning**
+- the above mentioned pause and stop script does work in chrome but if you reload(F5) before pausing , it interferes with the pause and stop.
+- iterative traversals are hard to wrap your head around.
+- learnt a bit about self-balancing BSTs. (AVL, Red-Black) , might implement them later.
+- planning to implement HashTables using LinkedLists, associative arrays using BST, associative arrays using HashTable, and Priority Queue using BST.
+- still to implement iterators in the BST, though i guess it would reuse the logic of inorder traversal.
