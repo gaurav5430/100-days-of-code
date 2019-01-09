@@ -40,3 +40,5 @@ for(let item of list) {
 //list.remove(2);
 
 let bst = new BinarySearchTreeIterative();
+
+let as = new AssociativeArrayUsingBST();

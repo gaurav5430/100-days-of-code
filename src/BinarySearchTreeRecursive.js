@@ -1,8 +1,9 @@
 class Node {
-    constructor(left, value, right) {
-        this.left = left;
-        this.right = right;
+    constructor(key, value) {
+        this.key = key;
         this.value = value;
+        this.left = null;
+        this.right = null;
     }
 }
 
@@ -11,49 +12,112 @@ class BinarySearchTreeRecursive {
         this.root = null;
     }
 
-    add(item) {
+    * [Symbol.iterator] () {
+        let node = this.root;
+        if(node) {
+            this.inorderTraversal(node.left);
+            yield node.key;
+            this.inorderTraversal(node.right);
+        }
+    }
+
+    search(key) {
+        return this.searchNode(key, this.root);
+    }
+
+    searchNode(key, node) {
+        if(!node) {
+            return null;
+        }
+
+        if(key < node.key) {
+            return this.searchNode(key, node.left);
+        }
+        else if(key > node.key) {
+            return this.searchNode(key, node.right);
+        }
+        else if(key === node.key) {
+            return node.value;
+        }
+    }
+
+    add(key, value) {
         if (!this.root) {
-            this.root = new Node(null, item, null);
+            this.root = new Node(key, value);
             return this.root;
         }
 
-        return this.addNode(item, this.root);
+        return this.addNode(key, value, this.root);
     }
 
     addAll(arr) {
         for (let item of arr) {
-            this.add(item);
+            this.add(item.key, item.value);
         }
     }
 
-    addNode(item, node) {
-        if (item < node.value) {
+    addNode(key, value, node) {
+        if (key < node.key) {
             if(!node.left) {
-                node.left = new Node(null, item, null);
+                node.left = new Node(key, value);
+                return node.left;
             }
 
             else {
-                this.addNode(item, node.left);
+                return this.addNode(key, value, node.left);
             }
         }
 
-        else if (item > node.value) {
+        else if (key > node.key) {
             if(!node.right) {
-                node.right = new Node(null, item, null);
+                node.right = new Node(key, value);
+                return node.right;
             }
 
             else {
-                this.addNode(item, node.right);
+                return this.addNode(key, value, node.right);
             }
+        }
+
+        else if ( key === node.key) {
+            node.value = value;
+            return node;
         }
     }
 
-    delete(item) {
-        return this.deleteNode(item, this.root);
+    delete(key) {
+        if(this.root.key === key) {
+            
+            // 0 child
+            if(this.root.left === null && this.root.right === null) {
+                this.root = null;
+            }
+
+            // 1 child
+            else if(this.root.left === null) {
+                this.root = this.root.right;
+            }
+
+            else if(this.root.right === null) {
+                this.root = this.root.left;
+            }
+            // 2 child
+            else {
+                //replace with the minimum of right subtree and then delete the minimum child
+                let minNode = this.findMinNode(this.root.right);
+                this.root.key = minNode.key;
+                this.root.value = minNode.value;
+                this.deleteNode(minNode.key, this.root.right);
+            }
+        }
+
+        else {
+            return this.deleteNode(key, this.root);
+        }
     }
 
-    deleteNode(item, node) {
-        if(node.left && item === node.left.value) {
+    deleteNode(key, node) {
+        if(node.left && key === node.left.key) {
             let toDelete = node.left;
             // 0 child
             if(toDelete.left === null && toDelete.right === null) {
@@ -71,12 +135,13 @@ class BinarySearchTreeRecursive {
             else {
                 //replace with the minimum of right subtree and then delete the minimum child
                 let minNode = this.findMinNode(toDelete.right);
+                toDelete.key = minNode.key;
                 toDelete.value = minNode.value;
-                this.deleteNode(minNode.value, toDelete);
+                this.deleteNode(minNode.key, toDelete);
             }
         }
 
-        else if(node.right && item === node.right.value) {
+        else if(node.right && key === node.right.key) {
 
             let toDelete = node.right;
             // 0 child
@@ -95,18 +160,61 @@ class BinarySearchTreeRecursive {
             else {
                 //replace with the minimum of right subtree and then delete the minimum child
                 let minNode = this.findMinNode(toDelete.right);
+                toDelete.key = minNode.key;
                 toDelete.value = minNode.value;
-                this.deleteNode(minNode.value, toDelete);
+                this.deleteNode(minNode.key, toDelete);
             }
         }
 
-        else if (item < node.value) {
-            this.deleteNode(item, node.left);
+        else if (key < node.key) {
+            this.deleteNode(key, node.left);
         }
 
-        else if(item > node.value) {
-            this.deleteNode(item, node.right);
+        else if(key > node.key) {
+            this.deleteNode(key, node.right);
         }
+
+    }
+
+    deleteNodeNotUnderstood(key, node) {
+
+        if(!node) {
+            return null;
+        }
+
+        if(key < node.key) {
+            node.left = this.deleteNode(key, node.left);
+        }
+
+        else if(key > node.key) {
+            node.right = this.deleteNode(key, node.right);
+        }
+
+        else {
+            // 0 or 1 child
+            if(node.right === null) {
+                let toReturn = node.left;
+                node = null;
+                return toReturn;
+            }
+
+            else if(node.left === null) {
+                let toReturn = node.right;
+                node = null;
+                return toReturn;
+            }
+            // 2 child
+            else {
+                //replace with the minimum of right subtree and then delete the minimum child
+                let minNode = this.findMinNode(node.right);
+                node.key = minNode.key;
+                node.value = minNode.value;
+                node.right = this.deleteNode(minNode.key, node.right);
+            }
+        }
+
+        return node;
+        
     }
 
     findMinNode(node) {
@@ -135,7 +243,7 @@ class BinarySearchTreeRecursive {
 
     preorderTraversal(node) {
         if(node) {
-            console.log(node.value);
+            console.log(node.key);
             this.preorderTraversal(node.left);
             this.preorderTraversal(node.right);
         }
@@ -144,7 +252,7 @@ class BinarySearchTreeRecursive {
     inorderTraversal(node) {
         if(node) {
             this.inorderTraversal(node.left);
-            console.log(node.value);
+            console.log(node.key);
             this.inorderTraversal(node.right);
         }
     }
@@ -153,7 +261,7 @@ class BinarySearchTreeRecursive {
         if(node) {
             this.postorderTraversal(node.left);
             this.postorderTraversal(node.right);
-            console.log(node.value);
+            console.log(node.key);
             
         }
        
