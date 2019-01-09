@@ -55,3 +55,11 @@ Not a lot of progress, finished iterative postorder traversal in BST.
 - learnt a bit about associative arrays and how they can be implemented using BST, HashTable.
 - finally understood how iterative postorder traversal works with single/double stack and implemented it.
 
+### Day 7:
+Finished BST functionality. started with Associative Arrays.
+
+**Learning**
+- created iterator for BST.
+- trying to figure out if it is possible to return elements in order instead of printing it.
+- created a associative array using BST.
+- corrected delete functionality as it wasn't working for root node. There is a lot of repitition in the code, must be a way to write it succinctly.
