@@ -2,7 +2,8 @@ class LinkedList {
     constructor() {
         this.head = undefined;
         this.Node = class {
-            constructor(value, next) {
+            constructor(key, value, next) {
+                this.key = key;
                 this.value = value;
                 this.next = next;
             }
@@ -37,30 +38,36 @@ class LinkedList {
     * [Symbol.iterator]() {
         let temp = this.head;
         while(temp) {
-            yield temp.value;
+            yield { key: temp.key , value: temp.value };
             temp = temp.next;
         }
     }
 
-    add(item) {
-        const node = new this.Node(item, null);
+    add(key, value) {
+        const node = new this.Node(key, value, null);
+        let exists = false;
         if (this.head === undefined) {
             this.head = node;
         }
         else {
             let temp = this.head;
             while(temp.next) {
+                if(temp.key === key) {
+                    temp.value = value;
+                    exists = true;
+                    break;
+                }
                 temp = temp.next;
             }
 
-            temp.next = node;
+            if(!exists) temp.next = node;
         }
     }
 
     traverse() {
         let temp = this.head;
         do {
-            console.log(temp.value);
+            console.log(temp);
             temp = temp.next;
         } while(temp);
     }
@@ -70,7 +77,7 @@ class LinkedList {
         let prev = this.head;
         let count = 0;
         while(current) {
-            if(current.value === key) {
+            if(current.key === key) {
                 prev.next = current.next;
                 count++;
             }
@@ -85,11 +92,11 @@ class LinkedList {
         return count;
     }
 
-    addAt(item, index) {
+    addAt(index, key, value) {
 
         if (index < 0 || index > this.length) return;
 
-        let toInsert = new this.Node(item, this.head);
+        let toInsert = new this.Node(key, value, this.head);
         if (index === 0) {
             this.head = toInsert;
         }
@@ -104,7 +111,7 @@ class LinkedList {
                 i++;
             } 
 
-            prev.next = new this.Node(item, current)
+            prev.next = new this.Node(key, value, current)
         }
         
 
@@ -113,9 +120,9 @@ class LinkedList {
 
     removeAt(index) {
         if (index === 0) {
-            let { value } = this.head;
+            let node = this.head;
             this.head = this.head.next;
-            return value;
+            return { key: node.key, value: node.value };
         }
 
         let current = this.head;
@@ -128,21 +135,21 @@ class LinkedList {
         } 
 
         prev.next = current.next;
-        return current.value;
+        return { key: current.key, value: current.value };
     }
 
     isEmpty() {
         return this.length === 0;
     }
 
-    indexOf(value) {
-        if(!value) return -1;
+    indexOf(key) {
+        if(!key) return -1;
 
         let temp = this.head;
         let index = -1;
         while(temp) {
             index++;
-            if (temp.value === value) {
+            if (temp.key === key) {
                 break;
             }
             temp = temp.next;
@@ -157,14 +164,22 @@ class LinkedList {
         }
         
         let temp = this.head;
-        let element = temp.value;
+        let element = temp;
         let i = 0;
         while(temp && i != index) {
             i++;
             temp = temp.next;
-            element = temp.value;
+            element = temp;
         }
 
-        return element;
+        return { key: element.key, value: element.value };
+    }
+
+    get(key) {
+        for(let item of this) {
+            if(item.key === key) {
+                return item.value;
+            }
+        }
     }
 }

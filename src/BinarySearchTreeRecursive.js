@@ -14,11 +14,8 @@ class BinarySearchTreeRecursive {
 
     * [Symbol.iterator] () {
         let node = this.root;
-        if(node) {
-            this.inorderTraversal(node.left);
-            yield node.key;
-            this.inorderTraversal(node.right);
-        }
+        let arr = this.inorderTraversal(node);
+        yield* arr;
     }
 
     search(key) {
@@ -250,10 +247,16 @@ class BinarySearchTreeRecursive {
     }
 
     inorderTraversal(node) {
+        let arr = [];
+        this.inorderTraversalWithArray(node, arr);
+        return arr;
+    }
+
+    inorderTraversalWithArray(node, arr) {
         if(node) {
-            this.inorderTraversal(node.left);
-            console.log(node.key);
-            this.inorderTraversal(node.right);
+            this.inorderTraversalWithArray(node.left, arr);
+            arr.push(node.key);
+            this.inorderTraversalWithArray(node.right, arr);
         }
     }
 

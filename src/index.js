@@ -18,26 +18,15 @@ pq.enqueue({ name: 'four', priority: 4 });
 
 console.log(pq.dequeue());
 
-let pq_ll = new PriorityQueueWithLinkedList();
-pq_ll.enqueue({ name: 'one', priority: 2 });
-pq_ll.enqueue({ name: 'two', priority: 3 });
-pq_ll.enqueue({ name: 'three', priority: 1 });
-pq_ll.enqueue({ name: 'four', priority: 4 });
+// let pq_ll = new PriorityQueueWithLinkedList();
+// pq_ll.enqueue({ name: 'one', priority: 2 });
+// pq_ll.enqueue({ name: 'two', priority: 3 });
+// pq_ll.enqueue({ name: 'three', priority: 1 });
+// pq_ll.enqueue({ name: 'four', priority: 4 });
 
-console.log(pq_ll.dequeue());
+// console.log(pq_ll.dequeue());
 
 let list = new LinkedList();
-list.add(1);
-// list.add(2);
-// list.add(3);
-// list.add(2);
-// list.add(1);
-
-for(let item of list) {
-    console.log(item);
-}
-
-//list.remove(2);
 
 let bst = new BinarySearchTreeIterative();
 
