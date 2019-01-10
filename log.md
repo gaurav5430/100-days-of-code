@@ -63,3 +63,12 @@ Finished BST functionality. started with Associative Arrays.
 - trying to figure out if it is possible to return elements in order instead of printing it.
 - created a associative array using BST.
 - corrected delete functionality as it wasn't working for root node. There is a lot of repitition in the code, must be a way to write it succinctly.
+
+### Day 8:
+Corrected BST iterator
+
+**Learning**
+- destructuring assignment works for anything that implements an iterator (LinkedList, BST)
+- wondering how recursion works in functional programming, where we need to pass in a memoization array from outside the recursive function.
+- yield* is more or less similar to for...of loop, yielding every value one at a time.
+
