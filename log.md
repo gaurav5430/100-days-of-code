@@ -65,7 +65,8 @@ Finished BST functionality. started with Associative Arrays.
 - corrected delete functionality as it wasn't working for root node. There is a lot of repitition in the code, must be a way to write it succinctly.
 
 ### Day 8:
-Corrected BST iterator
+Corrected BST iterator. It returns all elements inorder using an array.
+implemented Associative Array using BST and Linked List.
 
 **Learning**
 - destructuring assignment works for anything that implements an iterator (LinkedList, BST)
