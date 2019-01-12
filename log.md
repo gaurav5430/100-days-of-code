@@ -73,3 +73,19 @@ implemented Associative Array using BST and Linked List.
 - wondering how recursion works in functional programming, where we need to pass in a memoization array from outside the recursive function.
 - yield* is more or less similar to for...of loop, yielding every value one at a time.
 
+### Day 9:
+Learnt a bit about Self ORganizing Trees and Self Organizing Linked Lists.
+Also read about Abstract Data Types.
+No Coding sadly.
+
+
+### Day 10:
+Implemented 3 popular ways for self organizing lists.
+Extended the LinkedList class and overrode the search/get method to work accordingly for Transpose/Count/MTF.
+Should changing the Node Type be allowed when creating a Linked List (As it might be required to change the structure of the node to store extra things, like in this case count) ?
+I circumvented it by defining a associative array on the List class, instead of changing the Node definition and used it for keeping track of counts.
+
+How are self organizing lists used in symbol tables ?
+How are associative arrays used in the decorator pattern ? 
+(Both questions from wikipedia entries for the respective data structures)
+
