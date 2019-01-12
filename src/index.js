@@ -31,3 +31,14 @@ let list = new LinkedList();
 let bst = new BinarySearchTreeIterative();
 
 let as = new AssociativeArrayUsingBST();
+
+let l = new SelfOrganizingListCount();
+l.add(1,"one");
+l.add(2,"two");
+l.add(3,"three");
+l.add(4,"four");
+
+l.get(2);
+l.get(2);
+l.get(4);
+l.get(4);
