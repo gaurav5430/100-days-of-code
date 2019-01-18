@@ -74,18 +74,60 @@ implemented Associative Array using BST and Linked List.
 - yield* is more or less similar to for...of loop, yielding every value one at a time.
 
 ### Day 9:
-Learnt a bit about Self ORganizing Trees and Self Organizing Linked Lists.
+Learnt a bit about Self Organizing Trees and Self Organizing Linked Lists.
 Also read about Abstract Data Types.
 No Coding sadly.
 
 
 ### Day 10:
-Implemented 3 popular ways for self organizing lists.
-Extended the LinkedList class and overrode the search/get method to work accordingly for Transpose/Count/MTF.
-Should changing the Node Type be allowed when creating a Linked List (As it might be required to change the structure of the node to store extra things, like in this case count) ?
-I circumvented it by defining a associative array on the List class, instead of changing the Node definition and used it for keeping track of counts.
+Implemented 3 popular ways for self organizing lists.  
+Extended the LinkedList class and overrode the search/get method to work accordingly for Transpose/Count/MTF.  
+Should changing the Node Type be allowed when creating a Linked List (As it might be required to change the structure of the node to store extra things, like in this case count) ?  
+I circumvented it by defining a associative array on the List class, instead of changing the Node definition and used it for keeping track of counts.  
 
-How are self organizing lists used in symbol tables ?
-How are associative arrays used in the decorator pattern ? 
-(Both questions from wikipedia entries for the respective data structures)
+How are self organizing lists used in symbol tables ?  
+How are associative arrays used in the decorator pattern ?   
+(Both questions from wikipedia entries for the respective data structures)  
+
+### Day 11:
+Implemented insertion in AVL tree.  
+Re-implemented deletion in BST by returning root of the tree after every deletion.  
+
+**Learning**  
+- Self balancing Binary Search trees are generally much more efficient than regular BSTs.
+- multiple kinds of self balancing trees - AVL trees, Red-Black Trees.
+
+### Day 12:  
+Read about deletion in AVL tree. Couldn't implement it yet.
+
+**Learning**
+- Deletion is more complex than insertion as you might have to balance, the parents of the rotated node as well. Still to figure out why.
+
+### Day 13:  
+No coding.
+
+**Learning**  
+- Self organizing lists are used in symbol tables to keep the most recently used symbol towards the top of the table for quick access.
+  
+### Day 14:  
+Implemented Circular Linked List and Doubly Linked List.  
+
+**Learning**
+- Circular Linked List is useful for round-robin kind of algorithms.
+- It is not trivial to extend or use LinkedList to create either of Circular/Doublt Linked List, easier to create it as an independent class.
+
+### Day 15:  
+Finished Doubly Linked List browser back/forward algorithm implementation.  
+Implemented Double Ended Queue.  
+
+**Learning**
+- Doubly Linked list is really useful if you already have a reference to a node and want to traverse forward/backward from that node (which was the main reason to use it for browser back/forward algorithm implementation)
+
+### Day 16:
+Implemented Queue and Stack using Linked List and Deque.  
+
+**Learning**:
+- what are circular queues and what problems they solve. (fixed-size buffers, round-robin).
+- double ended queue is a generalization of queue and stack.
+- it is not trivial to implemented PriorityQueue using a Queue , but it is easier to just extend an extending Queue class and change the enqueue method to make a PriorityQueue.
 
