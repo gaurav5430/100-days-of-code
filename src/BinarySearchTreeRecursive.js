@@ -4,6 +4,7 @@ class Node {
         this.value = value;
         this.left = null;
         this.right = null;
+        this.height = 1;
     }
 }
 
@@ -113,6 +114,47 @@ class BinarySearchTreeRecursive {
         }
     }
 
+    deleteNodeUnderstood(key, node) {
+        if(!node) {
+            return null;
+        }
+
+        if (key < node.key) {
+            node.left = this.deleteNodeUnderstood(key, node.left);
+        }
+
+        if(key > node.key) {
+            node.right = this.deleteNodeUnderstood(key, node.right);
+        }
+
+        else {
+            if(node.left === null && node.right === null) {
+                node = null;
+                return node;
+            }
+
+            if(node.left === null) {
+                const toReturn = node.right;
+                node = null;
+                return toReturn;
+            }
+
+            if(node.right === null) {
+                const toReturn = node.left;
+                return node.left;
+            }
+
+            else {
+                //replace with the minimum of right subtree and then delete the minimum child
+                let minNode = this.findMinNode(node.right);
+                node.key = minNode.key;
+                node.value = minNode.value;
+                node.right = this.deleteNode(minNode.key, node.right);
+            }
+        }
+
+        return node;
+    }
     deleteNode(key, node) {
         if(node.left && key === node.left.key) {
             let toDelete = node.left;

@@ -113,9 +113,6 @@ class LinkedList {
 
             prev.next = new this.Node(key, value, current)
         }
-        
-
-        
     }
 
     removeAt(index) {
