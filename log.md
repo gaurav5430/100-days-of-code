@@ -131,3 +131,11 @@ Implemented Queue and Stack using Linked List and Deque.
 - double ended queue is a generalization of queue and stack.
 - it is not trivial to implemented PriorityQueue using a Queue , but it is easier to just extend an extending Queue class and change the enqueue method to make a PriorityQueue.
 
+### Day 17:
+No Coding.
+
+### Day 18:
+Finished AVL tree deletion implementation. Moced on to Red Black trees which seem even more complex to implement.
+
+**Laarning**:
+- it is a good idea to return the root from tree operations, as it allows us to do operations on parent and parent of parent in a recursive way, without keeping track of parent in a separate pointer.

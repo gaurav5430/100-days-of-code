@@ -1,16 +1,15 @@
-class Node {
-    constructor(key, value) {
-        this.key = key;
-        this.value = value;
-        this.left = null;
-        this.right = null;
-        this.height = 1;
-    }
-}
-
 class BinarySearchTreeRecursive {
     constructor() {
         this.root = null;
+        this.Node = class {
+            constructor(key, value) {
+                this.key = key;
+                this.value = value;
+                this.left = null;
+                this.right = null;
+                this.height = 1;
+            }
+        }
     }
 
     * [Symbol.iterator] () {
@@ -41,7 +40,7 @@ class BinarySearchTreeRecursive {
 
     add(key, value) {
         if (!this.root) {
-            this.root = new Node(key, value);
+            this.root = new this.Node(key, value);
             return this.root;
         }
 
@@ -55,30 +54,19 @@ class BinarySearchTreeRecursive {
     }
 
     addNode(key, value, node) {
-        if (key < node.key) {
-            if(!node.left) {
-                node.left = new Node(key, value);
-                return node.left;
-            }
+        if(!node) {
+            return new this.Node(key, value);
+        }
 
-            else {
-                return this.addNode(key, value, node.left);
-            }
+        if (key < node.key) {
+            node.left = this.addNode(key, value, node.left);
         }
 
         else if (key > node.key) {
-            if(!node.right) {
-                node.right = new Node(key, value);
-                return node.right;
-            }
-
-            else {
-                return this.addNode(key, value, node.right);
-            }
+            node.right = this.addNode(key, value, node.right);
         }
 
-        else if ( key === node.key) {
-            node.value = value;
+        else {
             return node;
         }
     }

@@ -1,4 +1,7 @@
 class AVLTree extends BinarySearchTreeRecursive {
+    constructor() {
+        super();
+    }
     
     getHeight(node) {
         if(!node) return 0;
@@ -38,17 +41,18 @@ class AVLTree extends BinarySearchTreeRecursive {
 
     add(key, value) {
         if (!this.root) {
-            this.root = new Node(key, value);
+            this.root = new this.Node(key, value);
             return this.root;
         }
 
-        return this.addNode(key, value, this.root);
+        this.root = this.addNode(key, value, this.root);
+        return this.root;
     }
 
     addNode(key, value, node) {
         
         if(!node) {
-            return new Node(key, value);
+            return new this.Node(key, value);
         }
 
         if (key < node.key) {
@@ -94,6 +98,97 @@ class AVLTree extends BinarySearchTreeRecursive {
     }
 
     delete(key) {
+        this.root = this.deleteNode(key, this.root);
+        return this.root
+    }
 
+    deleteNode(key, node) {
+        if(!node) {
+            return null;
+        }
+
+        else if (key < node.key) {
+            node.left = this.deleteNode(key, node.left);
+        }
+
+        else if(key > node.key) {
+            node.right = this.deleteNode(key, node.right);
+        }
+
+        else {
+            if(node.left === null && node.right === null) {
+                node = null;
+            }
+
+            else if(node.left === null) {
+                const toReturn = node.right;
+                node = toReturn;
+            }
+
+            else if(node.right === null) {
+                const toReturn = node.left;
+                node = toReturn;
+            }
+
+            else {
+                //replace with the minimum of right subtree and then delete the minimum child
+                let minNode = this.findMinNode(node.right);
+                node.key = minNode.key;
+                node.value = minNode.value;
+                node.right = this.deleteNode(minNode.key, node.right);
+            }
+
+
+        }
+
+        // If the tree had only one node then return 
+        if (node == null) 
+        return node; 
+
+        // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE 
+        node.height = 1 + Math.max(this.getHeight(node.left), 
+                                this.getHeight(node.right)); 
+
+        // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to 
+        // check whether this node became unbalanced) 
+        let balance = this.getBalance(node); 
+
+        // If this node becomes unbalanced, then there are 4 cases 
+
+        // Left Left Case 
+        if (balance > 1 && this.getBalance(node.left) >= 0) 
+            return this.rightRotate(node); 
+
+        // Left Right Case 
+        if (balance > 1 && this.getBalance(node.left) < 0) 
+        { 
+            node.left =  this.leftRotate(node.left); 
+            return this.rightRotate(node); 
+        } 
+
+        // Right Right Case 
+        if (balance < -1 && this.getBalance(node.right) <= 0) 
+            return this.leftRotate(node); 
+
+        // Right Left Case 
+        if (balance < -1 && this.getBalance(node.right) > 0) 
+        { 
+            node.right = this.rightRotate(node.right); 
+            return this.leftRotate(node); 
+        } 
+
+        return node; 
+    }
+
+    findMinNode(node) {
+        if(!node) {
+            node = this.root;
+        }
+
+        if(node.left) {
+            return this.findMinNode(node.left);
+        }
+
+        return node;
     }
 }
