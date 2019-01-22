@@ -27,7 +27,7 @@ class AVLTree extends BinarySearchTreeRecursive {
     }
 
     rightRotate(node) {
-        const leftNdoe = node.left;
+        const leftNode = node.left;
         const rightSubtreeOfLeft = leftNode.right;
 
         leftNode.right = node;

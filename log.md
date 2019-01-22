@@ -139,3 +139,9 @@ Finished AVL tree deletion implementation. Moced on to Red Black trees which see
 
 **Laarning**:
 - it is a good idea to return the root from tree operations, as it allows us to do operations on parent and parent of parent in a recursive way, without keeping track of parent in a separate pointer.
+
+### Day 19: 
+Implemented Bottom-Up insertion in Red-Black Trees.
+
+**Learning**
+- understood why we insert a red node and not a black node, because red violation is easier to fix.
