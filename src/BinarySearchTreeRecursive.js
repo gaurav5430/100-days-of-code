@@ -33,6 +33,7 @@ class BinarySearchTreeRecursive {
         else if(key > node.key) {
             return this.searchNode(key, node.right);
         }
+
         else if(key === node.key) {
             return node.value;
         }
@@ -44,7 +45,8 @@ class BinarySearchTreeRecursive {
             return this.root;
         }
 
-        return this.addNode(key, value, this.root);
+        this.root = this.addNode(key, value, this.root);
+        return this.root;
     }
 
     addAll(arr) {
@@ -66,9 +68,7 @@ class BinarySearchTreeRecursive {
             node.right = this.addNode(key, value, node.right);
         }
 
-        else {
-            return node;
-        }
+        return node;
     }
 
     delete(key) {
@@ -143,6 +143,7 @@ class BinarySearchTreeRecursive {
 
         return node;
     }
+
     deleteNode(key, node) {
         if(node.left && key === node.left.key) {
             let toDelete = node.left;

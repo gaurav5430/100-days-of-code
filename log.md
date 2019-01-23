@@ -145,3 +145,9 @@ Implemented Bottom-Up insertion in Red-Black Trees.
 
 **Learning**
 - understood why we insert a red node and not a black node, because red violation is easier to fix.
+
+### Day 20:
+Implemented Set using Array/LinkedList/BST
+
+**Learning**
+- instead of usual inheritance and overriding all the functions (as general function names differ across arrays, linkedlist and BST) used a Proxy object for remapping differently named functions across implementations to a common interface, so whenever there is a need to create a new implemnetation, jsut override the proxy implementation in the constructor.

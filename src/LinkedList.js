@@ -140,6 +140,7 @@ class LinkedList {
     }
 
     indexOf(key) {
+        let found = false;
         if(!key) return -1;
 
         let temp = this.head;
@@ -147,11 +148,13 @@ class LinkedList {
         while(temp) {
             index++;
             if (temp.key === key) {
+                found;
                 break;
             }
             temp = temp.next;
         }
 
+        if(!found) return -1;
         return index;
     }
 
