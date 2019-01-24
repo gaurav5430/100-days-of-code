@@ -151,3 +151,11 @@ Implemented Set using Array/LinkedList/BST
 
 **Learning**
 - instead of usual inheritance and overriding all the functions (as general function names differ across arrays, linkedlist and BST) used a Proxy object for remapping differently named functions across implementations to a common interface, so whenever there is a need to create a new implemnetation, jsut override the proxy implementation in the constructor.
+
+### Day 21:
+Implemented a simple HashTable with Separate Chaining using LinkedList/Array/BST
+
+**Learning**
+- how difficult it is to get a good hash function.
+- some details of how Java implements HashTable
+- still to figure out universal hash functions.
