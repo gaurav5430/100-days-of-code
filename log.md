@@ -159,3 +159,11 @@ Implemented a simple HashTable with Separate Chaining using LinkedList/Array/BST
 - how difficult it is to get a good hash function.
 - some details of how Java implements HashTable
 - still to figure out universal hash functions.
+
+### Day 22:
+Implemented a binary min heap using arrays.
+
+**Learning/Todo**
+- heaps are really good as priority queues.
+- need to look into other type of heaps.
+- need to write tests for each of these data structures.
