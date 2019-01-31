@@ -86,8 +86,10 @@ class MinHeapUsingArray {
             this.heapify(smallest);
         }
 
-
     }
 
+    isEmpty() {
+         return this.collection.length === 0;
+    }
 
 }

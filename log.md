@@ -167,3 +167,15 @@ Implemented a binary min heap using arrays.
 - heaps are really good as priority queues.
 - need to look into other type of heaps.
 - need to write tests for each of these data structures.
+
+### Day 23:
+Implemented Circular Buffer and Deque using Array and Circular Buffer.
+
+### Day 25, 25, 26:
+No coding, no reading
+
+### Day 27:
+Implemented Priority Queue using Heap, Priority Queue using Doubly Linked List.
+
+**Learning**
+- Priority Queue can be implemented using any data structure that allows access to all the elements sequentially, so it can't be implemented using something like a Deque.

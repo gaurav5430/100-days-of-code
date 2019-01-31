@@ -1,7 +1,8 @@
 const pq1 = new PriorityQueueUsingArray();
 const pq2 = new PriorityQueueUsingLinkedList();
+const pq3 = new PriorityQueueUsingDoublyLinkedList();
 
-const pqs = [ pq1, pq2 ];
+const pqs = [ pq1, pq2, pq3 ];
 const toPush = [
     { key: 0, value: { data: "zero", priority: 10 } },
     { key: 1, value: { data: "one", priority: 1 } },
