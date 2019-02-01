@@ -179,3 +179,12 @@ Implemented Priority Queue using Heap, Priority Queue using Doubly Linked List.
 
 **Learning**
 - Priority Queue can be implemented using any data structure that allows access to all the elements sequentially, so it can't be implemented using something like a Deque.
+
+### Day 28:
+Implemented buildHeap using siftDown and siftUp. Also implemented a way to allow user to pass in a comparator function to decide whether they want a min heap or a max heap.
+
+**Learning**
+- top down vs bottom up heap creation.
+- it is possible to build a heap in O(n) using siftDown, while siftUp would build it in O(nlogn)
+- siftUp is mostly useful when you need to insert one at a time, like when creating a priority queue using a heap.
+- some great explanation here: https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity/18742428#18742428

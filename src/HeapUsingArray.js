@@ -1,6 +1,9 @@
-class MinHeapUsingArray {
+class HeapUsingArray {
     constructor() {
         this.collection = [];
+        this.comparatorFn = (a, b) => {
+            return a.key - b.key;
+        }
     }
 
     getParentIndex(index) {
@@ -26,7 +29,9 @@ class MinHeapUsingArray {
     push(key, value) {
         this.collection.push({ key, value });
         let i = this.collection.length - 1;
-        while(i != 0 && this.collection[this.getParentIndex(i)].key > this.collection[i].key) {
+
+        //this.collection[this.getParentIndex(i)].key > this.collection[i].key
+        while(i >= 0 && this.comparatorFn(this.collection[this.getParentIndex(i)], this.collection[i]) > 0) {
             this.swapElement(i, this.getParentIndex(i)); 
             i = this.getParentIndex(i);
         }
@@ -36,7 +41,7 @@ class MinHeapUsingArray {
         const root = this.collection[0];
         this.collection[0] = this.collection[this.collection.length - 1];
         this.collection.length--;
-        if(this.collection.length > 1) this.heapify(0);
+        if(this.collection.length > 1) this.heapifySiftDown(0);
         return root;
     }
 
@@ -48,7 +53,8 @@ class MinHeapUsingArray {
         const root = this.peek();
         this.collection[index].key = root.key;
         this.collection[index].value = root.value;
-        while (index !=0 && this.collection[this.getParentIndex(index)].key > root.key) {
+        //this.collection[this.getParentIndex(index)].key > root.key
+        while (index !=0 && this.comparatorFn(this.collection[this.getParentIndex(index)], this.collection[index]) > 0) {
             this.swapElement(index, this.getParentIndex(index));
             index = this.getParentIndex(index);
         }
@@ -69,27 +75,48 @@ class MinHeapUsingArray {
         }
     }
 
-    heapify(index) {
+    heapifySiftDown(index) {
         const leftIndex = this.getLeftChildIndex(index);
         const rightIndex = this.getRightChildIndex(index);
         let smallest = index;
-        if(leftIndex < this.collection.length - 1 && this.collection[leftIndex].key < this.collection[smallest].key) {
+        if(leftIndex < this.collection.length && this.comparatorFn(this.collection[smallest], this.collection[leftIndex]) > 0 ) {
             smallest = leftIndex;
         }
 
-        if(rightIndex < this.collection.length - 1 && this.collection[rightIndex].key < this.collection[smallest].key) {
+        if(rightIndex < this.collection.length && this.comparatorFn(this.collection[smallest], this.collection[rightIndex]) > 0) {
             smallest = rightIndex;
         }
 
         if(smallest !== index) {
             this.swapElement(index, smallest);
-            this.heapify(smallest);
+            this.heapifySiftDown(smallest);
         }
+    }
 
+    heapifySiftUp(index) {
+        let current = index;
+        const parentIndex = this.getParentIndex(index);
+        if(parentIndex >= 0 && this.comparatorFn(this.collection[parentIndex], this.collection[current]) > 0) {
+            this.swapElement(index, parentIndex);
+            this.heapifySiftUp(parentIndex);
+        }
     }
 
     isEmpty() {
          return this.collection.length === 0;
+    }
+
+    buildHeap(array) {
+        this.collection = array;
+        for(let i = this.collection.length - 1; i >= 0; i--) {
+            if(this.getParentIndex(i) >= 0) {
+                this.heapifySiftDown(this.getParentIndex(i));
+            }
+        }
+
+        // for(let i = this.collection.length - 1; i >= 0; i--) {
+        //     this.heapifySiftUp(i);
+        // }
     }
 
 }
