@@ -188,3 +188,10 @@ Implemented buildHeap using siftDown and siftUp. Also implemented a way to allow
 - it is possible to build a heap in O(n) using siftDown, while siftUp would build it in O(nlogn)
 - siftUp is mostly useful when you need to insert one at a time, like when creating a priority queue using a heap.
 - some great explanation here: https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity/18742428#18742428
+
+### Day 29:
+Started Implementing Binary Tree using Array.
+
+**Learning**
+- how to do a level order traversal recursively.
+- how to persist state in recursive function.
