@@ -66,43 +66,59 @@ class BinaryTreeUsingArray {
     }
 
     // Function to print all nodes of a given level from left to right
-printLevel(node, level)
-{
-	if (!this.collection[node])
-		return false;
+    printLevel(node, level)
+    {
+        if (!this.collection[node])
+            return false;
 
-	if (level === 1)
-	{
-		console.log(this.collection[node]);
-		// return true if at-least one node is present at given level
-		return true;
-	}
+        if (level === 1)
+        {
+            console.log(this.collection[node]);
+            // return true if at-least one node is present at given level
+            return true;
+        }
 
-	let left = this.printLevel(this.getLeftChildIndex(node), level - 1);
-	let right = this.printLevel(this.getRightChildIndex(node), level - 1);
+        let left = this.printLevel(this.getLeftChildIndex(node), level - 1);
+        let right = this.printLevel(this.getRightChildIndex(node), level - 1);
 
-	return left || right;
-}
+        return left || right;
+    }
 
-// Function to print level order traversal of given binary tree
-levelOrderTraversal(node)
-{
-	if (!this.collection[node])
-		return;
+    // Function to print level order traversal of given binary tree
+    levelOrderTraversal(node)
+    {
+        if (!this.collection[node])
+            return;
 
-	// start from level 1 -- till height of the tree
-	let level = 1;
+        // start from level 1 -- till height of the tree
+        let level = 1;
 
-	// run till printLevel() returns false
-	while (this.printLevel(node, level))
-		level++;
-}
+        // run till printLevel() returns false
+        while (this.printLevel(node, level))
+            level++;
+    }
 
     inorderTraversal(node) {
         if(this.collection[node]) {
             this.inorderTraversal(this.getLeftChildIndex(node));
             console.log(this.collection[node]);
             this.inorderTraversal(this.getRightChildIndex(node)); 
+        }
+    }
+
+    preorderTraversal(node) {
+        if(this.collection[node]) {
+            console.log(this.collection[node]);
+            this.preorderTraversal(this.getLeftChildIndex(node));
+            this.preorderTraversal(this.getRightChildIndex(node));
+        }
+    }
+
+    postorderTraversal(node) {
+        if(this.collection[node]) {
+            this.postorderTraversal(this.getLeftChildIndex(node));
+            this.postorderTraversal(this.getRightChildIndex(node));
+            console.log(this.collection[node]);
         }
     }
 }

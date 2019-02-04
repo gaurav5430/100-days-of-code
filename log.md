@@ -195,3 +195,9 @@ Started Implementing Binary Tree using Array.
 **Learning**
 - how to do a level order traversal recursively.
 - how to persist state in recursive function.
+
+### Day 30:  
+Learnt a bit about postorder and preorder applications.  
+
+### Day 31:  
+Finished implementing Binary Tree using Array. extended to BST using Array.
