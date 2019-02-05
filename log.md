@@ -201,3 +201,11 @@ Learnt a bit about postorder and preorder applications.
 
 ### Day 31:  
 Finished implementing Binary Tree using Array. extended to BST using Array.
+
+### Day 32:
+Started with Graph Implementation using AdjacencyMatrix and AdjacencyList
+
+**Learning/ToDo:**
+- create adjacency list using Sets/HashTable
+- BFS/DFS iterative and recursive
+- parallel edges

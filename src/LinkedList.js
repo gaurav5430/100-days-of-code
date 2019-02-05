@@ -141,14 +141,14 @@ class LinkedList {
 
     indexOf(key) {
         let found = false;
-        if(!key) return -1;
+        if(key === null || key === undefined) return -1;
 
         let temp = this.head;
         let index = -1;
         while(temp) {
             index++;
             if (temp.key === key) {
-                found;
+                found = true;
                 break;
             }
             temp = temp.next;
