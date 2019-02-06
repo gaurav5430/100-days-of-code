@@ -32,11 +32,58 @@ class GraphUsingAdjacencyMatrix {
         return false;
     }
 
-    // BFS(start) {
-    //     const visited = new Array(this.collection.length);
-    //     visited[start] = true;
-    //     for(let i=0; i< this.collection.length; i++) {
-    //         if(this.collection[start][i])
-    //     }
-    // }
+    BFS(start) {
+        let q = new QueueUsingArray();
+        let visited = new Array(this.collection.length);
+        q.enqueue(start,start);
+        let current = start;
+        while(!q.isEmpty()) {
+            let current = q.dequeue()
+            visited[current] = true;
+            console.log(current);
+            for (let i = 0; i<this.collection[current].length; i++) {
+                if(this.collection[current][i] != undefined) {
+                    if(!visited[i]) {
+                        q.enqueue(i, i);
+                    }
+                }
+            }
+        }
+    }
+
+    DFS(start) {
+        let stack = new StackUsingArray();
+        let visited = new Array(this.collection.length);
+        stack.push(start, start);
+        while(!stack.isEmpty()) {
+            let current = stack.pop();
+            console.log(current);
+            visited[current] = true;
+            for(let i = this.collection[current].length - 1; i>= 0 ; i--) {
+                if(this.collection[current][i] != undefined) {
+                    if(!visited[i]) {
+                        stack.push(i, i);
+                    }
+                }
+            }
+        }
+    }
+
+
+    DFSRecursive(start) {
+        let visited = new Array(this.collection.length);
+        this.DFSRecurse(start, visited);
+    }
+
+    DFSRecurse(start, visited) {
+        visited[start] = true;
+        console.log(start);
+        for(let i = 0; i< this.collection[start].length; i++) {
+            if(!visited[i]) {
+                if(this.collection[start][i] != undefined) {
+                    this.DFSRecurse(i, visited);
+                }
+            }
+        }
+    }
 }

@@ -209,3 +209,6 @@ Started with Graph Implementation using AdjacencyMatrix and AdjacencyList
 - create adjacency list using Sets/HashTable
 - BFS/DFS iterative and recursive
 - parallel edges
+
+### Day 33:
+Implemented BFS and DFS
