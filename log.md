@@ -212,3 +212,10 @@ Started with Graph Implementation using AdjacencyMatrix and AdjacencyList
 
 ### Day 33:
 Implemented BFS and DFS
+
+### Day 34: 
+played around with BFS/level order traversal
+Implemented a Complete BinaryTree using Node
+
+**Learning/ToDo:**
+- recursive BFS

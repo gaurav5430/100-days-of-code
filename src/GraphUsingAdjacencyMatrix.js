@@ -36,7 +36,6 @@ class GraphUsingAdjacencyMatrix {
         let q = new QueueUsingArray();
         let visited = new Array(this.collection.length);
         q.enqueue(start,start);
-        let current = start;
         while(!q.isEmpty()) {
             let current = q.dequeue()
             visited[current] = true;
@@ -85,5 +84,45 @@ class GraphUsingAdjacencyMatrix {
                 }
             }
         }
+    }
+
+    BFSRecursive(start) {
+        let visited = new Array(this.collection.length);
+        const q = new QueueUsingArray();
+        q.enqueue(start, start);
+        this.BFSRecurse(visited, q);
+    }
+
+    BFSRecurse(visited, q) {
+        if(!q.isEmpty()) {
+            let current = q.dequeue();
+            console.log(current);
+            visited[current] = true;
+
+            for(let i = 0;i<this.collection[current].length; i++) {
+                if(!visited[i] && this.collection[current][i] !== undefined) {
+                    q.enqueue(i, i);
+                }
+            }
+
+            this.BFSRecurse(visited, q);
+        }
+    }
+    
+    levelTraverse(node, level, visited) {
+        if(level === 1) {
+            console.log(this.collection[node]);
+            return true;
+        }
+
+        for(let i=0; i<this.collection[node].length; i++) {
+            if(!visited[i] && this.collection[node][i] !== undefined) {
+                this.levelTraverse(i, level - 1);
+            }
+        }
+    }
+
+    levelOrderTraversal(start) {
+
     }
 }
