@@ -219,3 +219,11 @@ Implemented a Complete BinaryTree using Node
 
 **Learning/ToDo:**
 - recursive BFS
+
+### Day 35: 
+Tried some solutions for Recursive BFS. Inspired from the level order traversal of Binary Tree.
+
+**Learning/Todo:**
+- no recursive solution is better than the iterative solution using Queue.
+- Recursive BFS can employ DFS to traverse till a particular depth/level.
+- yet to find a better implementation. Some comments here: https://cs.stackexchange.com/questions/64379/can-breadth-first-search-be-implemented-recursively-without-data-structures?answertab=votes#tab-top

@@ -110,19 +110,63 @@ class GraphUsingAdjacencyMatrix {
     }
     
     levelTraverse(node, level, visited) {
-        if(level === 1) {
-            console.log(this.collection[node]);
+
+        let flag = false;
+        if(level <= 0) return false;
+        if(level === 1 && !visited[node]) {
+            visited[node] = true;
+            console.log(node);
             return true;
         }
 
         for(let i=0; i<this.collection[node].length; i++) {
-            if(!visited[i] && this.collection[node][i] !== undefined) {
-                this.levelTraverse(i, level - 1);
+            if(this.collection[node][i] !== undefined) {
+                flag = this.levelTraverse(i, level - 1, visited) || flag;
             }
         }
+
+        return flag;
     }
 
     levelOrderTraversal(start) {
+        // start from level 1 -- till height of the tree
+        let level = 1;
 
+        const visited = new Array(this.collection.length);
+        // run till printLevel() returns false
+        while (this.levelTraverse(start, level, visited))
+            level++;
+    }
+
+    maxDepthDFS(start, depth) {
+        let reachedDepth = 0;
+        let stack = new StackUsingArray();
+        let visited = new Array(this.collection.length);
+        stack.push(start, start);
+        reachedDepth++;
+        while(!stack.isEmpty() && reachedDepth <= depth) {
+            let current = stack.pop();
+            if(reachedDepth === depth) console.log(current);
+            visited[current] = true;
+            for(let i = this.collection[current].length - 1; i>= 0 ; i--) {
+                if(this.collection[current][i] != undefined) {
+                    if(!visited[i]) {
+                        stack.push(i, i);
+                    }
+                }
+            }
+
+            reachedDepth++;
+        }
+
+        if(reachedDepth - 1 === depth) return true;
+        return false;
+    }
+
+    BFSusingDFS(start) {
+        let depth = 1;
+        while(this.maxDepthDFS(start, depth)) {
+            depth++;
+        }
     }
 }
