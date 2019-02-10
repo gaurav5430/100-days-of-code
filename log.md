@@ -227,3 +227,17 @@ Tried some solutions for Recursive BFS. Inspired from the level order traversal 
 - no recursive solution is better than the iterative solution using Queue.
 - Recursive BFS can employ DFS to traverse till a particular depth/level.
 - yet to find a better implementation. Some comments here: https://cs.stackexchange.com/questions/64379/can-breadth-first-search-be-implemented-recursively-without-data-structures?answertab=votes#tab-top
+
+### Day 36:
+Nothing on this repo. Did solve a few linked list questions otherwise
+
+**Learning/Todo:**
+- Tortoise/Hare - fast/slow ptr algorithm is used quite a lot in linked list problems.
+- Reversing a linked list, getting length of a linked list.
+
+### Day 37
+Staretd implementing Sorting algorithms on Arrays and LinkedList
+Implemented Selection Sort on arrays and LinkedList today.
+
+**Learning/Todo:**
+- Stable selection sort, selection sort using linked list (better implementation)
